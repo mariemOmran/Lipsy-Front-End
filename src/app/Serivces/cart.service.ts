@@ -1,30 +1,29 @@
 import { Injectable } from '@angular/core';
 import { ICart } from '../Models/icart';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-
+  // those lines i wrong in it i didn't make subject and don't subscribe on it 
+  private cartSubject = new BehaviorSubject<ICart[]>(this.getProductFromLocatStorage());
+  cartItems$ = this.cartSubject.asObservable();
   constructor() { }
-//save product in local storage
   saveProductLocalStorage(productID:number){
     let cartData = localStorage.getItem('cart');
     let cart :ICart [] = cartData ? JSON.parse(cartData):[];
 
-    // Check if the product is already in the cart
     let existingItemIndex = cart.findIndex(item => item.productId === productID);
 
     if (existingItemIndex !== -1) {
-        // If the product is already in the cart, increase its quantity by one
         cart[existingItemIndex].quantity++;
     } else {
-        // If the product is not in the cart, add it as a new item with a quantity of 1
-        cart.push({ productId: productID, quantity: 1 });
+         cart.push({ productId: productID, quantity: 1 });
     }
 
-    // Save the updated cart data back to local storage
     localStorage.setItem('cart', JSON.stringify(cart));
+    this.cartSubject.next(cart); 
   }
 
   getProductFromLocatStorage():ICart[] {
@@ -48,6 +47,7 @@ export class CartService {
       }
 
       localStorage.setItem('cart',JSON.stringify(products));
+      this.cartSubject.next(products);
     }
   }
 
@@ -57,6 +57,7 @@ export class CartService {
       products.splice(index,1);
 
     localStorage.setItem('cart',JSON.stringify(products));
+    this.cartSubject.next(products); 
   }
     
   setQuantitiy(quantity:number,productId:number){
@@ -68,6 +69,7 @@ export class CartService {
         products.splice(index,1);
       }
         localStorage.setItem('cart',JSON.stringify(products));
+        this.cartSubject.next(products);
     
   }
 }
