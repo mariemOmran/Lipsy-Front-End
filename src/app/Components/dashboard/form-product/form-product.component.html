@@ -1,0 +1,39 @@
+<h2>{{id==0?"Add Product":"Edite Product"}}</h2>
+<form *ngIf="product">
+  <div class="form-row">
+      <label for="inputPassword4">Name</label>
+      <input type="text" class="form-control" id="inputPassword4" [(ngModel)]="productUpdated.name" placeholder="Name" name="nameproduct" [value]="product?.name" />
+    </div>
+  <div class="form-group">
+    <label for="inputAddress">price</label>
+    <input type="number" class="form-control" id="inputAddress" [(ngModel)]="productUpdated.price" name="price" [value]="product?.price" placeholder="price"/>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress2">Description</label>
+    <input type="text" class="form-control" id="inputAddress2" [(ngModel)]="productUpdated.description" name="descripton" placeholder="Description" [value]="product?.description">
+  </div>
+  <div class="form-row">
+   
+    <div class="form-group col-md-6">
+      <label for="inputState">Categories</label>
+      <select id="inputState" class="form-control" name="selectBoxCategory" [(ngModel)]="productUpdated.categoryName">
+        <option *ngFor="let item of categories" [ngValue]="item.name" >{{item.name}}</option>
+      </select>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputState">Brands</label>
+      <select id="inputState" class="form-control"   name="selectBoxBrand"  [(ngModel)]="productUpdated.brandName">
+        <option *ngFor="let item of brands" [ngValue]="item.name" >{{item.name}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlFile1">Upload Image</label>
+        <input type="file" class="form-control-file" (change)="onFileSelected($event)"  id="exampleFormControlFile1">
+      </div>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Quantity</label>
+    <input type="number"  name="quantity" class="form-control" id="inputAddress" [(ngModel)]="productUpdated.qunatity" [value]="product?.qunatity" placeholder="Quantity"/>
+  </div>
+  <button (click)="editeProduct(product.id)" class="btn btn-primary">{{id==0?"Add Product":"Edite Product"}}</button>
+</form>

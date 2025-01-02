@@ -1,0 +1,124 @@
+
+    <header class="header header-6">
+        <div class="header-middle">
+            <div class="container">
+                <div class="header-left">
+                    <button class="btn btn-remove" (click)="logout()">log out </button>
+                </div>
+                <div class="header-center">
+                    <a [routerLink]="['Home']" class="logo">
+                        <img src="assets/images/demos/logo.png" alt="Molla Logo" width="82" height="20">
+                    </a>
+                </div><!-- End .header-left -->
+
+                <div class="header-right">
+                    <!-- <a href="wishlist.html" class="wishlist-link">
+                        <i class="icon-heart-o"></i>
+                        <span class="wishlist-count">3</span>
+                        <span class="wishlist-txt">My Wishlist</span>
+                    </a> -->
+
+                    <div class="dropdown cart-dropdown">
+                        <a  [routerLink]="['cart']"
+                            [routerLinkActive]="''"
+                            [routerLinkActiveOptions]="{ exact: true }"
+                            class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
+                            <i class="icon-shopping-cart"></i>
+                            <span class="cart-count">{{countProducts}}</span>
+                            <!-- //here -->
+                            <span class="cart-txt">$ 164,00</span>
+                        </a>
+
+                       
+                    </div><!-- End .cart-dropdown -->
+                </div>
+            </div><!-- End .container -->
+        </div><!-- End .header-middle -->
+
+        <div class="header-bottom sticky-header">
+            <div class="container">
+                <div class="header-left">
+                    <nav class="main-nav">
+                        <ul class="menu sf-arrows">
+                            <li class="megamenu-container ">
+                                <a
+                                 [routerLink]="['Home']"
+                                [routerLinkActive]="'active'"
+                                [routerLinkActiveOptions]="{exact:true}"
+                                class="sf-with-ul">Home</a>
+                            </li>
+                            <li>
+                                <a [routerLink]="['Shop']"
+                                [routerLinkActive]="'active'"
+                                [routerLinkActiveOptions]="{exact:true}"  class="sf-with-ul">Shop</a>
+                            </li>
+                            <li [hidden]="!isAdmin">
+                                
+                                <a [routerLink]="['Dashboard']"
+                                [routerLinkActive]="'active'"
+                                [routerLinkActiveOptions]="{exact:true}"  class="sf-with-ul">Dashboard</a>
+                            </li>
+                            <!-- <li>
+                                <a href="product.html" class="sf-with-ul">Product</a>
+                            </li>
+                            <li>
+                                <a href="#" class="sf-with-ul">Pages</a>
+                            </li>
+                            <li>
+                                <a href="blog.html" class="sf-with-ul">Blog</a>
+                            </li>
+                            <li>
+                                <a href="elements-list.html" class="sf-with-ul">Elements</a>
+                            </li> -->
+                        </ul><!-- End .menu -->
+                    </nav><!-- End .main-nav -->
+
+                    <button class="mobile-menu-toggler">
+                        <i class="icon-bars"></i>
+                    </button>
+                </div><!-- End .header-left -->
+            </div><!-- End .container -->
+        </div><!-- End .header-bottom -->
+    </header>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu-overlay"></div><!-- End .mobil-menu-overlay -->
+
+        <div class="mobile-menu-container mobile-menu-light">
+            <div class="mobile-menu-wrapper">
+                <span class="mobile-menu-close"><i class="icon-close"></i></span>
+    
+                <nav class="mobile-nav">
+                    <ul class="mobile-menu">
+                        <li class="active">
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="category.html">Shop</a>
+
+                        </li>
+                        <li>
+                            <a href="product.html" class="sf-with-ul">Product</a>
+
+                        </li>
+                        <li>
+                            <a href="#">Pages</a>
+
+                        </li>
+                        <li>
+                            <a href="blog.html">Blog</a>
+                        </li>
+                        <li>
+                            <a href="elements-list.html">Elements</a>
+                        </li>
+                    </ul>
+                </nav><!-- End .mobile-nav -->
+    
+                <div class="social-icons">
+                    <a href="#" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
+                    <a href="#" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
+                    <a href="#" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>
+                    <a href="#" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a>
+                </div><!-- End .social-icons -->
+            </div><!-- End .mobile-menu-wrapper -->
+        </div><!-- End .mobile-menu-container -->
+
